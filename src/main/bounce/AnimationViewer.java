@@ -51,9 +51,13 @@ public class AnimationViewer extends JPanel implements ActionListener {
 		Shape s3 = new DynamicRectangleShape(0, 40, 5, 7, 50, 50);
 		_shapes.add(s3);
 
-		// Image image = ImageRectangleShape.makeImage("data/" + "Holden.jpg", 50);
-		// Shape s2 = new ImageRectangleShape(1, 1, image);
-		// _shapes.add(s2);
+		Image image = ImageRectangleShape.makeImage("image.png", 150);
+		Shape s4 = new ImageRectangleShape(5, 5, image);
+		_shapes.add(s4);
+
+		Image image1 = ImageRectangleShape.makeImage("crying.jpg", 150);
+		Shape s5 = new ImageRectangleShape(3, 3, image1);
+		_shapes.add(s5);
 		
 		// Start the animation.
 		_timer.start();

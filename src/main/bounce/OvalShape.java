@@ -1,6 +1,7 @@
 package bounce;
 /**
  * Class to represent an oval.
+ * 
  * @author Charmaine Wu
  */
 
