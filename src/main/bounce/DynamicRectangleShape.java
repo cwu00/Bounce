@@ -14,6 +14,10 @@ public class DynamicRectangleShape extends RectangleShape {
     private Color colour = Color.red;
     private boolean fill = true;
 
+    public DynamicRectangleShape(){
+        super(DEFAULT_X_POS, DEFAULT_Y_POS, DEFAULT_DELTA_X, DEFAULT_DELTA_Y, DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    }
+
     public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, int width, int height){
         super(x, y, deltaX, deltaY, width, height);
     }

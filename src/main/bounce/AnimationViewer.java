@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.lang.model.element.NestingKind;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -58,6 +59,14 @@ public class AnimationViewer extends JPanel implements ActionListener {
 		Image image1 = ImageRectangleShape.makeImage("crying.jpg", 150);
 		Shape s5 = new ImageRectangleShape(3, 3, image1);
 		_shapes.add(s5);
+
+		NestingShape n1 = new NestingShape(0,0, 5,5, 200, 200);
+		n1.add(new OvalShape(30, 10));
+		n1.add(new DynamicRectangleShape());
+		NestingShape insiden1 = new NestingShape(0,0,2,2,50,50);
+		n1.add(insiden1);
+		insiden1.add(new OvalShape(2, 1));
+		_shapes.add(n1);
 		
 		// Start the animation.
 		_timer.start();

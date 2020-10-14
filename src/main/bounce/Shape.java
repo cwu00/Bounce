@@ -1,10 +1,13 @@
- package bounce;
+package bounce;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Abstract superclass to represent the general concept of a Shape. This class
- * defines state common to all special kinds of Shape instances and implements
- * a common movement algorithm. Shape subclasses must override method paint()
- * to handle shape-specific painting.
+ * defines state common to all special kinds of Shape instances and implements a
+ * common movement algorithm. Shape subclasses must override method paint() to
+ * handle shape-specific painting.
  * 
  * @author Ian Warren
  *
@@ -36,6 +39,8 @@ public abstract class Shape {
 	protected int _width;
 
 	protected int _height;
+
+	protected NestingShape parent = null;
 
 
 	/**
@@ -156,5 +161,37 @@ public abstract class Shape {
 	@Override
 	public String toString() {
 		return getClass().getName();
+	}
+
+	/**
+	* Returns the NestingShape that contains the Shape that method parent is called on. If the callee
+	* object is not a child within a NestingShape instance this method returns null.
+	*/
+	public NestingShape parent(){
+		return this.parent;
+	}
+
+	/**
+	* Sets the parent NestingShape of the shape object that this method is called on.
+	*/
+	protected void setParent(NestingShape parent){
+		this.parent = parent;
+	}
+
+	/**
+	* Returns an ordered list of Shape objects. The first item within the list is the root NestingShape 
+	* of the containment hierarchy. The last item within the list is the callee object (hence this method
+	* always returns a list with at least one item). Any intermediate items are NestingShapes that connect 
+	* the root NestingShape to the callee Shape. 
+	*/
+	public List<Shape> path(){
+		List<Shape> path = new ArrayList<Shape>();
+		Shape temp = this;
+		while (temp.parent() != null){
+			path.add(0, temp);
+			temp = temp.parent();
+		}
+		path.add(0, temp);
+		return path;
 	}
 }
