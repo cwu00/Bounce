@@ -40,6 +40,8 @@ public abstract class Shape {
 
 	protected int _height;
 
+	protected String _text = null;
+
 	protected NestingShape parent = null;
 
 
@@ -77,7 +79,21 @@ public abstract class Shape {
 		_width = width;
 		_height = height;
 	}
-	
+
+	/**
+	 * Creates a Shape instance with specified x, y, deltaX, deltaY, width,
+	 * height values and a 
+	 */
+	public Shape(int x, int y, int deltaX, int deltaY, int width, int height, String text) {
+		_x = x;
+		_y = y;
+		_deltaX = deltaX;
+		_deltaY = deltaY;
+		_width = width;
+		_height = height;
+		_text = text;
+	}
+
 	/**
 	 * Moves this Shape object within the specified bounds. On hitting a 
 	 * boundary the Shape instance bounces off and back into the two- 
@@ -109,7 +125,14 @@ public abstract class Shape {
 		_y = nextY;
 	}
 
-	public abstract void paint(Painter painter);
+	public final void paint(Painter painter){
+		doPaint(painter);
+		if (_text != null){
+			painter.drawCenteredText(_text, _x+(_width/2), _y+(_height/2));
+		}
+	}
+
+	protected abstract void doPaint(Painter painter);
 
 	/**
 	 * Returns this Shape object's x position.

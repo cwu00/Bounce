@@ -68,7 +68,7 @@ public class ImageRectangleShape extends RectangleShape{
     /**
      * Paints the image based on scaled size
      */
-    public void paint(Painter paint){
+    protected void doPaint(Painter paint){
         _width = sw;
         _height = sh;
         paint.drawImage(this.image, _x, _y, sw, sh);

@@ -60,12 +60,17 @@ public class AnimationViewer extends JPanel implements ActionListener {
 		Shape s5 = new ImageRectangleShape(3, 3, image1);
 		_shapes.add(s5);
 
+		Shape text1 = new RectangleShape(10,10,4,7,50,50,"im in pain");
+		_shapes.add(text1);
+
 		NestingShape n1 = new NestingShape(0,0, 5,5, 200, 200);
 		n1.add(new OvalShape(30, 10));
 		n1.add(new DynamicRectangleShape());
-		NestingShape insiden1 = new NestingShape(0,0,2,2,50,50);
+		NestingShape insiden1 = new NestingShape(0,0,2,2,100,100);
 		n1.add(insiden1);
-		insiden1.add(new OvalShape(2, 1));
+		NestingShape inside2 = new NestingShape(20,20,3,3,50,50);
+		n1.add(inside2);
+		inside2.add(new OvalShape(2, 1));
 		_shapes.add(n1);
 		
 		// Start the animation.

@@ -19,13 +19,16 @@ public class NestingShape extends Shape {
     public NestingShape(int x, int y, int deltaX, int deltaY, int width, int height){
         super(x,y,deltaX,deltaY,width,height); 
     }
+    public NestingShape(int x, int y, int deltaX, int deltaY, int width, int height, String text){
+        super(x,y,deltaX,deltaY,width,height, text); 
+    }
 
     /**
      * Paints a NestingShape object by drawing a rectangle around the edge of its bounding box. 
      * Once the NestingShape’s border has been painted, a NestingShape paints its children.
      */
     @Override
-    public void paint(Painter paint){
+    protected void doPaint(Painter paint){
         paint.drawRect(_x, _y, _width, _height);
         paint.translate(_x, _y);
         for (Shape s : _nestedChildren){

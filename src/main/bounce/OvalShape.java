@@ -31,12 +31,19 @@ public class OvalShape extends Shape{
 	 */
 	public OvalShape(int x, int y, int deltaX, int deltaY, int width, int height) {
 		super(x, y, deltaX, deltaY, width, height);
-    }
+	}
+	/**
+	 * Creates an OvalShape instance with specified x, y, deltaX, deltaY, width,height
+	 * values and text.
+	 */
+	public OvalShape(int x, int y, int deltaX, int deltaY, int width, int height, String text) {
+		super(x, y, deltaX, deltaY, width, height, text);
+	}
     /**
 	 * Paints the oval using the supplied Painter.
 	 */
 	@Override
-	public void paint(Painter painter) {
+	protected void doPaint(Painter painter) {
 		painter.drawOval(_x,_y,_width,_height);
 	}
 }

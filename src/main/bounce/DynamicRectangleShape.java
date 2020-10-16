@@ -27,6 +27,11 @@ public class DynamicRectangleShape extends RectangleShape {
         this.colour = colour;
     }
 
+    public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, int width, int height, String text, Color colour){
+        super(x, y, deltaX, deltaY, width, height, text);
+        this.colour = colour;
+    }
+
     /**
      * Moves the shape within the specified boundaries.
      * Checks if shape has hit any boundary and decide 
@@ -63,14 +68,14 @@ public class DynamicRectangleShape extends RectangleShape {
      * hit a boundary.
 	 */
     @Override
-    public void paint(Painter paint){
+    protected void doPaint(Painter paint){
         Color currentColor = paint.getColor();
         if (fill){
             paint.setColor(colour);
             paint.fillRect(_x, _y, _width, _height);
             paint.setColor(currentColor);
         } else {
-            super.paint(paint);
+            super.doPaint(paint);
         }
     }
 }
